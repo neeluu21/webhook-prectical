@@ -2,7 +2,7 @@
 
 // Secure Webhook Receiver Example
 
-$secret = "MY_SUPER_SECRET_KEY";
+$secret = "fd1319ed4c1cc5d1ce089608cfbe42ccd1f7d551090cd83e7b5d0835c4e29c2a";
 
 $payload = file_get_contents('php://input');
 
