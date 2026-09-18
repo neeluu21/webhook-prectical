@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neel Solanki — DevOps & Cloud</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand"><span class="dot"></span> neel@solanki:~$</div>
+    <nav class="navlinks">
+      <a href="#home">~/home</a>
+      <a href="#skills">~/skills</a>
+      <a href="#experience">~/experience</a>
+      <a href="#projects">~/projects</a>
+      <a href="#resume">~/resume</a>
+      <a href="#contact">~/contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section id="home" style="border-top:none;padding-top:0;">
+    <div class="hero">
+      <div>
+        <div class="terminal">
+          <div class="term-bar">
+            <span class="r"></span><span class="y"></span><span class="g"></span>
+            <span class="label">bash — 120x30</span>
+          </div>
+          <div class="term-body" id="typeTarget">
+            <!-- filled by JS -->
+          </div>
+        </div>
+        <div class="hero-links">
+          <a class="btn primary" href="#resume">→ view resume</a>
+          <a class="btn" href="#projects">→ browse projects</a>
+          <a class="btn" href="mailto:cloudneelu00@gmail.com">→ email me</a>
+        </div>
+      </div>
+
+      <div class="diagram-card">
+        <div class="diagram-title"><span>vpc-architecture.svg</span><span class="live">● live traffic</span></div>
+        <svg viewBox="0 0 460 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated diagram of a 3-tier AWS VPC architecture with internet gateway, application load balancer, and EC2 auto scaling group across two availability zones">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#2C7A72"/>
+            </marker>
+          </defs>
+
+          <!-- VPC boundary -->
+          <rect x="14" y="70" width="432" height="300" rx="10" fill="none" stroke="#223046" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <text x="24" y="60" fill="#4A5872" font-family="JetBrains Mono, monospace" font-size="11">VPC · 10.0.0.0/16</text>
+
+          <!-- Internet -->
+          <circle cx="230" cy="24" r="16" fill="#101826" stroke="#4FD1C5" stroke-width="1.5"/>
+          <text x="230" y="28" fill="#4FD1C5" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">WWW</text>
+          <text x="230" y="52" fill="#8695AD" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">internet</text>
+
+          <path id="pathIGW" d="M230,40 L230,90" stroke="#223046" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- IGW -->
+          <rect x="195" y="90" width="70" height="34" rx="6" fill="#16202F" stroke="#223046"/>
+          <text x="230" y="111" fill="#E6EDF3" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle">IGW</text>
+
+          <path id="pathALB" d="M230,124 L230,160" stroke="#223046" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- ALB -->
+          <rect x="180" y="160" width="100" height="34" rx="6" fill="#16202F" stroke="#4FD1C5"/>
+          <text x="230" y="181" fill="#4FD1C5" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle">ALB</text>
+
+          <!-- AZ boxes -->
+          <rect x="30" y="220" width="185" height="130" rx="8" fill="none" stroke="#1A2434" stroke-dasharray="3 3"/>
+          <text x="40" y="236" fill="#4A5872" font-family="JetBrains Mono, monospace" font-size="9">AZ-a · public/private</text>
+
+          <rect x="245" y="220" width="185" height="130" rx="8" fill="none" stroke="#1A2434" stroke-dasharray="3 3"/>
+          <text x="255" y="236" fill="#4A5872" font-family="JetBrains Mono, monospace" font-size="9">AZ-b · public/private</text>
+
+          <!-- Paths ALB -> EC2 -->
+          <path id="pA" d="M215,194 C170,210 120,220 120,255" stroke="#223046" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+          <path id="pB" d="M245,194 C300,210 340,220 340,255" stroke="#223046" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+
+          <!-- EC2 in ASG, AZ-a -->
+          <rect x="82" y="255" width="76" height="30" rx="5" fill="#16202F" stroke="#223046"/>
+          <text x="120" y="274" fill="#E6EDF3" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">EC2 · web</text>
+          <rect x="82" y="300" width="76" height="30" rx="5" fill="#16202F" stroke="#223046"/>
+          <text x="120" y="319" fill="#E6EDF3" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">EC2 · web</text>
+
+          <!-- EC2 in ASG, AZ-b -->
+          <rect x="302" y="255" width="76" height="30" rx="5" fill="#16202F" stroke="#223046"/>
+          <text x="340" y="274" fill="#E6EDF3" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">EC2 · web</text>
+          <rect x="302" y="300" width="76" height="30" rx="5" fill="#16202F" stroke="#223046"/>
+          <text x="340" y="319" fill="#E6EDF3" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">EC2 · web</text>
+
+          <text x="230" y="366" fill="#4A5872" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">Auto Scaling Group · min 2 / max 4 · CPU target-tracking</text>
+
+          <!-- animated packets -->
+          <circle r="3.2" fill="#F5A623">
+            <animateMotion dur="2.4s" repeatCount="indefinite" path="M230,40 L230,90 L230,124 L230,160"/>
+          </circle>
+          <circle r="3" fill="#4FD1C5">
+            <animateMotion dur="2.6s" begin="0.6s" repeatCount="indefinite" path="M215,194 C170,210 120,220 120,255"/>
+          </circle>
+          <circle r="3" fill="#4FD1C5">
+            <animateMotion dur="2.6s" begin="1.2s" repeatCount="indefinite" path="M245,194 C300,210 340,220 340,255"/>
+          </circle>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal">
+    <div class="section-tag"><span class="fname">about.md</span></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="title">Building infrastructure that stays up.</h2>
+        <p><strong>Neel Solanki</strong> is a BSc.IT student out of Ahmedabad with strong fundamentals in Linux and AWS, currently seeking a DevOps internship. He's drawn to the parts of software that most people never see — the pipelines, the subnets, the auto-scaling policies quietly doing their job at 3am.</p>
+        <p style="margin-top:14px;">He recently completed a hands-on DevOps and AWS internship, and spends the rest of his time shipping personal infrastructure projects: highly-available VPCs, self-hosted CI/CD runners, and static sites that deploy themselves.</p>
+      </div>
+      <div class="meta-list">
+        <div><b>Base</b><br>Ahmedabad, India</div>
+        <div><b>Focus</b><br>Cloud infra · Automation · CI/CD</div>
+        <div><b>Status</b><br>Open to DevOps internships</div>
+        <div><b>Speaks</b><br>Gujarati · Hindi · English</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="reveal">
+    <div class="section-tag"><span class="fname">skills.yaml</span></div>
+    <h2 class="title">Stack</h2>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <ul><li>Python</li><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+      </div>
+      <div class="skill-card">
+        <h3>Operating Systems</h3>
+        <ul><li>Linux</li><li>Windows</li></ul>
+      </div>
+      <div class="skill-card">
+        <h3>Cloud · AWS</h3>
+        <ul><li>EC2</li><li>S3</li><li>VPC</li><li>IAM</li><li>Load Balancer</li><li>Auto Scaling</li></ul>
+      </div>
+      <div class="skill-card">
+        <h3>Tools</h3>
+        <ul><li>Docker</li><li>Kubernetes</li><li>Git</li><li>GitHub Actions (CI/CD)</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="reveal">
+    <div class="section-tag"><span class="fname">experience.log</span></div>
+    <h2 class="title">Experience</h2>
+    <div class="log">
+      <div class="log-entry">
+        <div class="log-head">
+          <div>
+            <div class="log-role">DevOps &amp; Cloud Intern</div>
+            <div class="log-org">Grras IT Solutions, Ahmedabad</div>
+          </div>
+          <div class="log-date">Feb 2026 – Mar 2026</div>
+        </div>
+        <ul>
+          <li>Completed a 120-hour internship across Linux, AWS, and DevOps, applying academic concepts to real-world cloud and infrastructure tasks.</li>
+          <li>Worked hands-on with core AWS services (EC2, S3, IAM, VPC) to configure, deploy, and manage cloud infrastructure.</li>
+          <li>Practiced Linux system administration and DevOps workflows involving containerization and version control (Docker, Git).</li>
+          <li>Evaluated on hours completed, quality of work, and punctuality — received consistently positive feedback from supervisor Rajesh Shah.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="reveal">
+    <div class="section-tag"><span class="fname">projects/</span></div>
+    <h2 class="title">Projects</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-head">
+          <h3>AWS 3-Tier Highly Available Architecture</h3>
+          <span class="proj-status">deployed</span>
+        </div>
+        <ul>
+          <li>Designed a custom VPC (10.0.0.0/16) with public/private subnets across 2 AZs, keeping EC2 instances unreachable from the internet by design.</li>
+          <li>Configured Internet/NAT Gateways, route tables, and chained security groups (ALB-SG → EC2-SG) to restrict instance access to load balancer traffic only.</li>
+          <li>Deployed an ALB and Auto Scaling Group (min 2, max 4) with CPU-based target-tracking scaling, verified via load testing across AZs.</li>
+        </ul>
+        <div class="tags"><span class="tag">VPC</span><span class="tag">ALB</span><span class="tag">Auto Scaling</span><span class="tag">Security Groups</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head">
+          <h3>CI/CD Pipeline — Self-Hosted GitHub Runner</h3>
+          <span class="proj-status">deployed</span>
+        </div>
+        <ul>
+          <li>Deployed a self-hosted GitHub Actions runner on an EC2 Ubuntu instance to execute CI/CD jobs on custom infrastructure.</li>
+          <li>Built a workflow that syncs code to /var/www/html and restarts Nginx automatically on every push to main.</li>
+          <li>Configured the runner as a persistent system service; verified multiple consecutive deployments with zero manual server access.</li>
+        </ul>
+        <div class="tags"><span class="tag">GitHub Actions</span><span class="tag">EC2</span><span class="tag">Nginx</span><span class="tag">systemd</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head">
+          <h3>AWS Static Website Hosting</h3>
+          <span class="proj-status">live</span>
+        </div>
+        <ul>
+          <li>Hosted a static website on Amazon S3 with IAM-based access control.</li>
+          <li>Enabled versioning to protect against accidental overwrites and support rollbacks.</li>
+        </ul>
+        <div class="tags"><span class="tag">S3</span><span class="tag">IAM</span><span class="tag">Versioning</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head">
+          <h3>EC2 Web Server Deployment</h3>
+          <span class="proj-status">live</span>
+        </div>
+        <ul>
+          <li>Launched an EC2 instance running Apache/Nginx as the web server.</li>
+          <li>Secured the instance with custom security group rules limiting inbound access.</li>
+        </ul>
+        <div class="tags"><span class="tag">EC2</span><span class="tag">Apache/Nginx</span><span class="tag">Security Groups</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" class="reveal">
+    <div class="section-tag"><span class="fname">resume.pdf</span></div>
+    <h2 class="title" style="text-align:center;margin-bottom:26px;">Resume</h2>
+
+    <div class="resume-shell">
+      <div class="resume-top">
+        <div>
+          <div class="resume-name">Neel Solanki</div>
+          <div class="resume-role">Aspiring DevOps Engineer</div>
+        </div>
+        <div class="resume-contact">
+          <div><a href="https://linkedin.com/in/neelsolanki2114" target="_blank" rel="noopener">linkedin.com/in/neelsolanki2114</a></div>
+          <div><a href="mailto:cloudneelu00@gmail.com">cloudneelu00@gmail.com</a></div>
+          <div><a href="tel:+916354827882">+91 6354827882</a></div>
+          <div>Ahmedabad, India</div>
+        </div>
+      </div>
+
+      <div class="rblock">
+        <h4>Summary</h4>
+        <p>Motivated BSc.IT student with strong fundamentals in Linux and AWS, seeking a DevOps internship. Passionate about cloud infrastructure, automation, and CI/CD practices. Completed a hands-on DevOps and AWS internship, gaining practical exposure to cloud deployment and system administration in a real-world environment.</p>
+      </div>
+
+      <div class="rblock">
+        <h4>Skills</h4>
+        <div class="rskills-line"><b>Languages —</b> Python, HTML, CSS, JavaScript</div>
+        <div class="rskills-line"><b>Operating Systems —</b> Linux, Windows</div>
+        <div class="rskills-line"><b>Cloud —</b> AWS (EC2, S3, VPC, IAM, Load Balancer, Auto Scaling)</div>
+        <div class="rskills-line"><b>Tools —</b> Docker, Kubernetes, Git, GitHub Actions (CI/CD)</div>
+      </div>
+
+      <div class="rblock">
+        <h4>Experience</h4>
+        <div class="redu-item">
+          <b>DevOps &amp; Cloud Intern — Grras IT Solutions, Ahmedabad</b>
+          <span class="yr">Feb 2026 – Mar 2026</span>
+          <span class="sub">120-hour internship in Linux, AWS + DevOps; hands-on with EC2, S3, IAM, VPC; positive supervisor feedback (Rajesh Shah).</span>
+        </div>
+      </div>
+
+      <div class="rblock">
+        <h4>Education</h4>
+        <div class="redu-item"><b>BSc.IT — Cloud and Application Development, Gujarat University</b><span class="yr">2023 – 2026</span><span class="sub">SGPA: 7.93</span></div>
+        <div class="redu-item"><b>12th Standard — Samarth School</b><span class="yr">2022 – 2023</span><span class="sub">Percentage: 56%</span></div>
+        <div class="redu-item"><b>10th Standard — Samarth School</b><span class="yr">2021 – 2022</span><span class="sub">Percentage: 71%</span></div>
+      </div>
+
+      <div class="rblock">
+        <h4>Certifications</h4>
+        <div class="rcert-item">DevOps &amp; AWS Cloud Internship Certification — Grras IT Solutions</div>
+        <div class="rcert-item">Evaluation Certificate, Linux, AWS + DevOps — Grras IT Solutions</div>
+        <div class="rcert-item">Advanced Diploma in Multilingual Computer Programming</div>
+      </div>
+
+      <div class="rblock" style="margin-bottom:0;">
+        <h4>Languages</h4>
+        <div class="lang-pills"><span>Gujarati</span><span>Hindi</span><span>English</span></div>
+      </div>
+    </div>
+
+    <div class="resume-actions">
+      <button class="btn primary" onclick="window.print()">↓ save as PDF</button>
+      <a class="btn" href="mailto:cloudneelu00@gmail.com">→ request full resume by email</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="reveal">
+    <div class="section-tag"><span class="fname">contact.sh</span></div>
+    <h2 class="title">Let's talk</h2>
+    <div class="contact-box">
+      <p class="lead">$ ./reach_neel.sh --purpose="internship, collab, or just cloud talk"</p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:cloudneelu00@gmail.com">✉ cloudneelu00@gmail.com</a>
+        <a class="btn" href="tel:+916354827882">☎ +91 6354827882</a>
+        <a class="btn" href="https://linkedin.com/in/neelsolanki2114" target="_blank" rel="noopener">in/neelsolanki2114</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  built by neel · deployed from ahmedabad · uptime since 2023
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
